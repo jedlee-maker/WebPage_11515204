@@ -3,474 +3,1774 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="藍天咖啡，為手沖咖啡愛好者挑選當季精品咖啡豆，讓每一杯都清澈、明亮、值得細品。">
-  <title>藍天咖啡｜讓風味，慢慢抵達</title>
+  <meta name="description" content="好喝咖啡 - 給消費者一杯好喝的咖啡。嚴選世界產區進口精品咖啡豆，以誠懇溫度沖煮，溫暖每一位愛咖啡的人。">
+  <title>好喝咖啡 HaoHe Coffee｜給消費者一杯好喝的咖啡，溫暖每一個日常</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;600;700&family=Noto+Serif+TC:wght@500;600;700;900&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;600;700&family=Noto+Serif+TC:wght@600;700;900&family=Outfit:wght@400;600;700&display=swap" rel="stylesheet">
   <style>
     :root {
-      --navy: #062742;
-      --blue: #0c5b95;
-      --sky: #75c6e8;
-      --mist: #eaf5f7;
-      --cream: #fbfaf6;
-      --ink: #122534;
-      --muted: #607482;
-      --line: #d7e4e8;
-      --sand: #e5b66b;
-      --shadow: 0 18px 50px rgba(6, 39, 66, .13);
+      /* 品牌主色系：藍色 */
+      --primary-navy: #09203f;
+      --primary-blue: #133b5c;
+      --accent-blue: #1d5f8a;
+      --sky-blue: #53a8b6;
+      --light-blue: #e8f1f5;
+      --ice-blue: #f2f7fa;
+
+      /* 溫暖與中性輔助色 */
+      --warm-amber: #e6a15c;
+      --warm-amber-hover: #d48e47;
+      --warm-cream: #faf8f5;
+      --warm-sand: #f0eae1;
+      --text-main: #1e293b;
+      --text-muted: #64748b;
+      --text-light: #94a3b8;
+      --white: #ffffff;
+      --border-color: #dbe4eb;
+      --shadow-sm: 0 4px 12px rgba(9, 32, 63, 0.06);
+      --shadow-md: 0 10px 28px rgba(9, 32, 63, 0.1);
+      --shadow-lg: 0 20px 40px rgba(9, 32, 63, 0.14);
+      --radius-sm: 8px;
+      --radius-md: 16px;
+      --radius-lg: 24px;
     }
 
-    * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
-    body {
+    * {
+      box-sizing: border-box;
       margin: 0;
-      color: var(--ink);
-      background: var(--cream);
-      font-family: "Noto Sans TC", sans-serif;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Noto Sans TC', sans-serif;
+      color: var(--text-main);
+      background-color: var(--warm-cream);
+      line-height: 1.75;
       font-size: 16px;
-      line-height: 1.7;
       -webkit-font-smoothing: antialiased;
     }
 
-    a { color: inherit; text-decoration: none; }
-    button, input { font: inherit; }
-    button { cursor: pointer; }
-    .wrap { width: min(1120px, calc(100% - 48px)); margin: 0 auto; }
-    .serif { font-family: "Noto Serif TC", serif; }
-    .eyebrow {
+    a {
+      color: inherit;
+      text-decoration: none;
+      transition: all 0.25s ease;
+    }
+
+    button {
+      font-family: inherit;
+      cursor: pointer;
+      border: none;
+      outline: none;
+      transition: all 0.25s ease;
+    }
+
+    .container {
+      width: min(1180px, calc(100% - 48px));
+      margin: 0 auto;
+    }
+
+    .serif {
+      font-family: 'Noto Serif TC', serif;
+    }
+
+    .outfit {
+      font-family: 'Outfit', sans-serif;
+    }
+
+    /* 頂部導覽列 */
+    .header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(9, 32, 63, 0.94);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(83, 168, 182, 0.25);
+      transition: all 0.3s ease;
+    }
+
+    .nav {
       display: flex;
       align-items: center;
-      gap: 10px;
-      margin: 0 0 13px;
-      color: var(--blue);
-      font-size: 11px;
+      justify-content: space-between;
+      height: 76px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      color: var(--white);
+    }
+
+    .brand-icon {
+      width: 42px;
+      height: 42px;
+      background: linear-gradient(135deg, var(--sky-blue), var(--accent-blue));
+      border-radius: 12px;
+      display: grid;
+      place-items: center;
+      box-shadow: 0 4px 14px rgba(83, 168, 182, 0.35);
+    }
+
+    .brand-icon svg {
+      width: 24px;
+      height: 24px;
+      fill: var(--white);
+    }
+
+    .brand-text {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .brand-title {
+      font-size: 22px;
       font-weight: 700;
-      letter-spacing: .18em;
+      letter-spacing: 0.08em;
+      color: var(--white);
     }
-    .eyebrow::before { content: ""; width: 28px; height: 1px; background: currentColor; }
-    .section-title {
-      margin: 0;
-      font: 700 clamp(30px, 4vw, 46px)/1.28 "Noto Serif TC", serif;
-      letter-spacing: .035em;
+
+    .brand-sub {
+      font-size: 10px;
+      letter-spacing: 0.18em;
+      color: var(--sky-blue);
+      text-transform: uppercase;
+      font-family: 'Outfit', sans-serif;
     }
-    .section-title em { color: var(--blue); font-style: normal; }
-    .section-copy { max-width: 48ch; margin: 20px 0 0; color: var(--muted); }
-    .button {
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: rgba(255, 255, 255, 0.82);
+      font-size: 15px;
+      font-weight: 500;
+      padding: 6px 0;
+      position: relative;
+    }
+
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--sky-blue);
+      transition: width 0.25s ease;
+    }
+
+    .nav-links a:hover {
+      color: var(--white);
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    .nav-cta {
+      padding: 10px 20px;
+      background: linear-gradient(135deg, var(--warm-amber), var(--warm-amber-hover));
+      color: var(--primary-navy) !important;
+      font-weight: 700 !important;
+      border-radius: 50px;
+      box-shadow: 0 4px 14px rgba(230, 161, 92, 0.3);
+    }
+
+    .nav-cta::after {
+      display: none !important;
+    }
+
+    .nav-cta:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 18px rgba(230, 161, 92, 0.45);
+    }
+
+    .mobile-btn {
+      display: none;
+      background: none;
+      color: var(--white);
+      font-size: 24px;
+      padding: 6px;
+    }
+
+    /* 主視覺 Banner (Hero) */
+    .hero {
+      position: relative;
+      background: linear-gradient(135deg, #07172c 0%, var(--primary-navy) 45%, var(--primary-blue) 100%);
+      color: var(--white);
+      padding: 100px 0 120px;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -30%;
+      right: -10%;
+      width: 650px;
+      height: 650px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(83, 168, 182, 0.22) 0%, transparent 65%);
+      pointer-events: none;
+    }
+
+    .hero::after {
+      content: '';
+      position: absolute;
+      bottom: -150px;
+      left: -100px;
+      width: 500px;
+      height: 500px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(230, 161, 92, 0.12) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 50px;
+      align-items: center;
+      position: relative;
+      z-index: 2;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 16px;
+      border-radius: 30px;
+      background: rgba(83, 168, 182, 0.16);
+      border: 1px solid rgba(83, 168, 182, 0.35);
+      color: var(--sky-blue);
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      margin-bottom: 24px;
+    }
+
+    .hero-badge-dot {
+      width: 8px;
+      height: 8px;
+      background-color: var(--warm-amber);
+      border-radius: 50%;
+      box-shadow: 0 0 10px var(--warm-amber);
+    }
+
+    .hero-title {
+      font-size: clamp(34px, 4.5vw, 54px);
+      line-height: 1.25;
+      margin-bottom: 22px;
+      letter-spacing: 0.03em;
+    }
+
+    .hero-title span.highlight {
+      color: var(--sky-blue);
+      position: relative;
+    }
+
+    .hero-title span.warmth {
+      color: var(--warm-amber);
+    }
+
+    .hero-desc {
+      font-size: 17px;
+      color: rgba(255, 255, 255, 0.82);
+      max-width: 540px;
+      margin-bottom: 36px;
+      line-height: 1.85;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      margin-bottom: 40px;
+    }
+
+    .btn {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      gap: 11px;
-      min-height: 50px;
-      padding: 12px 23px;
-      border: 1px solid transparent;
-      border-radius: 2px;
-      font-size: 14px;
+      gap: 10px;
+      padding: 14px 30px;
+      border-radius: 50px;
+      font-size: 15px;
       font-weight: 700;
-      letter-spacing: .04em;
-      transition: transform .22s ease, box-shadow .22s ease, background .22s ease;
+      letter-spacing: 0.03em;
+      transition: all 0.28s ease;
     }
-    .button:hover { transform: translateY(-2px); }
-    .button:focus-visible, a:focus-visible { outline: 3px solid var(--sky); outline-offset: 4px; }
-    .button-primary { color: var(--navy); background: var(--sand); box-shadow: 0 9px 22px rgba(1, 35, 59, .2); }
-    .button-primary:hover { background: #f0c77f; }
-    .button-outline { color: #fff; border-color: rgba(255,255,255,.58); }
-    .button-outline:hover { background: rgba(255,255,255,.1); }
-    .arrow { font-size: 18px; line-height: 1; }
 
-    /* Header */
-    .site-header {
-      position: absolute;
-      z-index: 10;
-      width: 100%;
-      color: #fff;
-      border-bottom: 1px solid rgba(255, 255, 255, .16);
+    .btn-warm {
+      background: linear-gradient(135deg, var(--warm-amber), var(--warm-amber-hover));
+      color: var(--primary-navy);
+      box-shadow: 0 8px 24px rgba(230, 161, 92, 0.35);
     }
-    .nav { display: flex; align-items: center; justify-content: space-between; min-height: 78px; }
-    .brand { display: flex; align-items: center; gap: 12px; font: 700 20px/1 "Noto Serif TC", serif; letter-spacing: .11em; }
-    .brand-mark {
+
+    .btn-warm:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 28px rgba(230, 161, 92, 0.45);
+    }
+
+    .btn-outline {
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      color: var(--white);
+    }
+
+    .btn-outline:hover {
+      background: rgba(255, 255, 255, 0.15);
+      border-color: var(--sky-blue);
+      color: var(--sky-blue);
+    }
+
+    .hero-stats {
+      display: flex;
+      gap: 32px;
+      padding-top: 32px;
+      border-top: 1px solid rgba(255, 255, 255, 0.15);
+    }
+
+    .stat-item {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .stat-num {
+      font-size: 26px;
+      font-weight: 700;
+      color: var(--sky-blue);
+      font-family: 'Outfit', sans-serif;
+    }
+
+    .stat-label {
+      font-size: 12px;
+      color: rgba(255, 255, 255, 0.65);
+    }
+
+    /* Hero 右側插畫卡片 */
+    .hero-card {
+      position: relative;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(83, 168, 182, 0.3);
+      border-radius: var(--radius-lg);
+      padding: 38px 30px;
+      box-shadow: var(--shadow-lg);
+      backdrop-filter: blur(10px);
+      text-align: center;
+    }
+
+    .coffee-steam-wrap {
+      position: relative;
+      width: 180px;
+      height: 180px;
+      margin: 0 auto 24px;
       display: grid;
-      width: 29px;
-      height: 29px;
       place-items: center;
-      border: 1px solid var(--sky);
+      background: radial-gradient(circle, rgba(83, 168, 182, 0.2) 0%, transparent 70%);
       border-radius: 50%;
-      color: var(--sky);
-      font: 700 19px/1 "Playfair Display", serif;
     }
-    .brand small { display: block; margin-top: 5px; color: rgba(255,255,255,.64); font: 600 8px/1 sans-serif; letter-spacing: .21em; }
-    .nav-links { display: flex; align-items: center; gap: 29px; font-size: 13px; font-weight: 500; }
-    .nav-links a { position: relative; padding: 6px 0; }
-    .nav-links a:not(.nav-cta)::after { content: ""; position: absolute; right: 0; bottom: 0; left: 0; height: 1px; background: var(--sky); transform: scaleX(0); transform-origin: right; transition: transform .22s; }
-    .nav-links a:not(.nav-cta):hover::after { transform: scaleX(1); transform-origin: left; }
-    .nav-cta { padding: 8px 16px !important; border: 1px solid rgba(255,255,255,.55); }
-    .nav-cta:hover { color: var(--navy); background: #fff; }
-    .menu-toggle { display: none; border: 0; color: #fff; background: transparent; }
 
-    /* Hero */
-    .hero { position: relative; min-height: 704px; overflow: hidden; color: #fff; background: var(--navy); }
-    .hero::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      opacity: .36;
-      background: radial-gradient(circle at 76% 45%, rgba(55, 167, 212, .75), transparent 23%), linear-gradient(117deg, rgba(4,25,45,.22) 0 48%, rgba(5,47,78,.82) 78%);
+    .cup-svg {
+      width: 110px;
+      height: 110px;
+      filter: drop-shadow(0 10px 18px rgba(0, 0, 0, 0.3));
     }
-    .hero::after {
-      content: "";
+
+    .hero-card-quote {
+      font-size: 18px;
+      color: var(--white);
+      margin-bottom: 8px;
+      font-weight: 600;
+    }
+
+    .hero-card-sub {
+      font-size: 13px;
+      color: var(--sky-blue);
+      margin-bottom: 20px;
+    }
+
+    .card-tags {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .tag-chip {
+      font-size: 12px;
+      padding: 5px 14px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 20px;
+      color: rgba(255, 255, 255, 0.85);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+    }
+
+    /* 區塊通用標題 */
+    .section {
+      padding: 96px 0;
+    }
+
+    .section-header {
+      text-align: center;
+      max-width: 680px;
+      margin: 0 auto 60px;
+    }
+
+    .section-eyebrow {
+      display: inline-block;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      color: var(--accent-blue);
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+
+    .section-title {
+      font-size: clamp(28px, 3.5vw, 40px);
+      color: var(--primary-navy);
+      line-height: 1.35;
+      margin-bottom: 18px;
+    }
+
+    .section-desc {
+      font-size: 16px;
+      color: var(--text-muted);
+      line-height: 1.8;
+    }
+
+    /* 品牌理念區塊：用途與溫暖初心 */
+    .about-section {
+      background-color: var(--white);
+    }
+
+    .pillars-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 30px;
+    }
+
+    .pillar-card {
+      background: var(--ice-blue);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 36px 28px;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .pillar-card::before {
+      content: '';
       position: absolute;
       top: 0;
-      right: -180px;
-      width: 760px;
-      height: 760px;
-      border: 1px solid rgba(153,220,240,.22);
+      left: 0;
+      width: 100%;
+      height: 4px;
+      background: var(--accent-blue);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.3s ease;
+    }
+
+    .pillar-card:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--shadow-md);
+      background: var(--white);
+    }
+
+    .pillar-card:hover::before {
+      transform: scaleX(1);
+    }
+
+    .pillar-icon-box {
+      width: 58px;
+      height: 58px;
+      border-radius: 16px;
+      background: linear-gradient(135deg, var(--primary-blue), var(--accent-blue));
+      display: grid;
+      place-items: center;
+      margin-bottom: 22px;
+      color: var(--white);
+      box-shadow: 0 6px 16px rgba(19, 59, 92, 0.2);
+    }
+
+    .pillar-title {
+      font-size: 21px;
+      color: var(--primary-navy);
+      margin-bottom: 14px;
+      font-weight: 700;
+    }
+
+    .pillar-text {
+      font-size: 15px;
+      color: var(--text-muted);
+      line-height: 1.8;
+    }
+
+    /* 品牌風格：進口精品咖啡豆區塊 */
+    .beans-section {
+      background-color: var(--warm-cream);
+    }
+
+    .beans-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+    }
+
+    .bean-card {
+      background: var(--white);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      border: 1px solid var(--border-color);
+      box-shadow: var(--shadow-sm);
+      display: flex;
+      flex-direction: column;
+      transition: all 0.3s ease;
+    }
+
+    .bean-card:hover {
+      transform: translateY(-8px);
+      box-shadow: var(--shadow-lg);
+      border-color: var(--sky-blue);
+    }
+
+    .bean-badge-area {
+      padding: 24px 22px 16px;
+      background: linear-gradient(135deg, #09203f 0%, #153e66 100%);
+      color: var(--white);
+      position: relative;
+    }
+
+    .bean-origin {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      color: var(--sky-blue);
+      text-transform: uppercase;
+      margin-bottom: 6px;
+      font-family: 'Outfit', sans-serif;
+    }
+
+    .bean-name {
+      font-size: 20px;
+      font-weight: 700;
+      letter-spacing: 0.03em;
+      line-height: 1.35;
+      margin-bottom: 8px;
+    }
+
+    .bean-roast {
+      display: inline-block;
+      font-size: 12px;
+      padding: 3px 10px;
+      border-radius: 20px;
+      background: rgba(255, 255, 255, 0.15);
+      color: var(--warm-cream);
+    }
+
+    .bean-body {
+      padding: 22px;
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+      justify-content: space-between;
+    }
+
+    .bean-notes {
+      margin-bottom: 18px;
+    }
+
+    .notes-label {
+      font-size: 12px;
+      color: var(--text-light);
+      margin-bottom: 6px;
+    }
+
+    .notes-content {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--primary-navy);
+      line-height: 1.5;
+    }
+
+    .bean-details {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      font-size: 12px;
+      color: var(--text-muted);
+      padding: 12px 0;
+      border-top: 1px dashed var(--border-color);
+      border-bottom: 1px dashed var(--border-color);
+      margin-bottom: 18px;
+    }
+
+    .bean-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .bean-price {
+      font-size: 19px;
+      font-weight: 700;
+      color: var(--primary-blue);
+      font-family: 'Outfit', sans-serif;
+    }
+
+    .bean-price small {
+      font-size: 12px;
+      color: var(--text-light);
+      font-weight: 400;
+    }
+
+    .btn-add {
+      background: var(--light-blue);
+      color: var(--primary-blue);
+      padding: 8px 16px;
+      border-radius: 30px;
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .btn-add:hover {
+      background: var(--primary-blue);
+      color: var(--white);
+    }
+
+    /* 功能區塊：讓消費者感到溫暖 - 暖心手沖步驟 */
+    .brew-section {
+      background: var(--white);
+    }
+
+    .brew-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+    }
+
+    .brew-image-box {
+      background: linear-gradient(135deg, #0d2a4a, #134b73);
+      border-radius: var(--radius-lg);
+      padding: 44px 36px;
+      color: var(--white);
+      position: relative;
+      overflow: hidden;
+      box-shadow: var(--shadow-lg);
+    }
+
+    .brew-image-box::before {
+      content: '';
+      position: absolute;
+      top: -50px;
+      right: -50px;
+      width: 200px;
+      height: 200px;
       border-radius: 50%;
-      box-shadow: 0 0 0 62px rgba(153,220,240,.045), 0 0 0 180px rgba(153,220,240,.025);
-    }
-    .hero-grid { position: relative; z-index: 1; display: grid; grid-template-columns: 1.02fr .98fr; gap: 45px; align-items: center; min-height: 704px; padding: 122px 0 72px; }
-    .hero .eyebrow { color: var(--sky); }
-    .hero-title { max-width: 13ch; margin: 0; font: 900 clamp(42px, 5.5vw, 68px)/1.22 "Noto Serif TC", serif; letter-spacing: .075em; }
-    .hero-title .blue { color: var(--sky); }
-    .hero-lede { max-width: 42ch; margin: 26px 0 32px; color: rgba(255,255,255,.78); font-size: 16px; }
-    .hero-actions { display: flex; flex-wrap: wrap; gap: 13px; }
-    .hero-note { margin-top: 28px; color: rgba(255,255,255,.52); font-size: 11px; letter-spacing: .1em; }
-    .hero-art { position: relative; min-height: 453px; }
-    .sun { position: absolute; top: 2%; right: 14%; width: 166px; height: 166px; border-radius: 50%; background: #93d6e6; box-shadow: 0 0 65px rgba(145,215,233,.36); }
-    .mountain { position: absolute; right: -4%; bottom: 2%; width: 98%; height: 70%; clip-path: polygon(0 73%, 23% 42%, 37% 59%, 61% 10%, 73% 29%, 84% 0, 100% 37%, 100% 100%, 0 100%); background: linear-gradient(135deg, #0b7eac, #06446f 70%); opacity: .85; }
-    .mountain::after { content: ""; position: absolute; inset: 0; background: linear-gradient(155deg, transparent 38%, rgba(2,35,58,.72) 38.5% 100%); }
-    .coffee-vessel { position: absolute; z-index: 2; right: 17%; bottom: 0; width: 255px; filter: drop-shadow(0 22px 21px rgba(0,0,0,.23)); }
-    .dripper { position: relative; width: 205px; height: 132px; margin: 0 auto -5px; border: 4px solid #e9f8fa; border-top-width: 6px; border-radius: 10px 10px 44% 44%; background: linear-gradient(115deg, rgba(123,206,225,.5), rgba(26,118,161,.23)); clip-path: polygon(0 0,100% 0,78% 100%,22% 100%); }
-    .dripper::after { content: ""; position: absolute; inset: 18px 16px 0; border-top: 1px solid rgba(255,255,255,.6); border-left: 1px solid rgba(255,255,255,.25); transform: skewX(-17deg); }
-    .carafe { position: relative; width: 170px; height: 181px; margin: 0 auto; border: 4px solid #e9f8fa; border-radius: 9px 9px 39% 39% / 9px 9px 19% 19%; background: linear-gradient(90deg, rgba(110,211,229,.26), rgba(1,52,87,.52)); }
-    .carafe::before { content: ""; position: absolute; top: -16px; left: 27px; width: 108px; height: 20px; border: 4px solid #e9f8fa; border-bottom: 0; border-radius: 50% 50% 0 0; }
-    .carafe::after { content: ""; position: absolute; right: 16px; bottom: 24px; left: 16px; height: 60px; border-radius: 3px 3px 26px 26px; background: linear-gradient(90deg, rgba(133,67,26,.84), rgba(76,33,9,.92)); }
-    .art-label { position: absolute; z-index: 3; top: 50%; right: 2%; width: 114px; padding-left: 12px; border-left: 1px solid var(--sky); color: rgba(255,255,255,.78); font-size: 10px; line-height: 1.7; letter-spacing: .1em; }
-    .art-label strong { display: block; color: var(--sky); font: 600 20px/1 "Playfair Display", serif; }
-    .scroll-line { position: absolute; bottom: 23px; left: max(24px, calc((100% - 1120px) / 2)); z-index: 2; display: flex; align-items: center; gap: 12px; color: rgba(255,255,255,.56); font-size: 10px; letter-spacing: .15em; }
-    .scroll-line::before { content: ""; width: 38px; height: 1px; background: currentColor; }
-
-    /* Intro */
-    .intro { padding: 118px 0; background: #fff; }
-    .intro-grid { display: grid; grid-template-columns: .9fr 1.1fr; gap: clamp(45px, 8vw, 105px); align-items: center; }
-    .intro-stamp { position: relative; min-height: 355px; }
-    .stamp-circle { position: absolute; inset: 13px auto auto 0; display: grid; width: 290px; height: 290px; place-items: center; border: 1px solid #9dd7e7; border-radius: 50%; color: var(--blue); text-align: center; }
-    .stamp-circle::before { content: ""; position: absolute; inset: 14px; border: 1px dashed #a5d9e6; border-radius: 50%; }
-    .stamp-circle strong { display: block; font: 700 43px/1 "Playfair Display", serif; letter-spacing: -.04em; }
-    .stamp-circle span { display: block; margin-top: 8px; font-size: 11px; font-weight: 700; letter-spacing: .14em; }
-    .stamp-card { position: absolute; right: 0; bottom: 0; width: 216px; padding: 21px 23px; color: #fff; background: var(--blue); box-shadow: var(--shadow); }
-    .stamp-card p { margin: 0; font-size: 12px; line-height: 1.8; }
-    .stamp-card b { display: block; margin-bottom: 8px; color: var(--sky); font: 600 12px/1 "Playfair Display", serif; letter-spacing: .14em; }
-    .intro .section-copy { font-size: 16px; }
-    .intro-link { display: inline-flex; gap: 10px; margin-top: 28px; padding-bottom: 4px; border-bottom: 1px solid var(--blue); color: var(--blue); font-size: 14px; font-weight: 700; }
-
-    /* Coffees */
-    .coffee-section { padding: 110px 0 120px; background: var(--mist); }
-    .section-head { display: flex; align-items: end; justify-content: space-between; gap: 30px; margin-bottom: 43px; }
-    .section-head .section-copy { max-width: 35ch; margin: 0; font-size: 14px; }
-    .coffee-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 19px; }
-    .coffee-card { position: relative; min-height: 384px; overflow: hidden; color: #fff; background: var(--navy); box-shadow: var(--shadow); }
-    .coffee-card::before { content: ""; position: absolute; right: -63px; bottom: -87px; width: 238px; height: 238px; border: 1px solid rgba(255,255,255,.29); border-radius: 50%; }
-    .coffee-card::after { content: ""; position: absolute; top: 0; right: 0; bottom: 0; left: 0; background: linear-gradient(160deg, transparent 42%, rgba(0,0,0,.28)); pointer-events: none; }
-    .coffee-card:nth-child(2) { background: #106396; }
-    .coffee-card:nth-child(3) { background: #164c68; }
-    .coffee-content { position: relative; z-index: 1; display: flex; flex-direction: column; min-height: 384px; padding: 29px; }
-    .coffee-number { color: var(--sky); font: 600 13px/1 "Playfair Display", serif; letter-spacing: .08em; }
-    .coffee-origin { margin: auto 0 7px; color: rgba(255,255,255,.63); font-size: 11px; font-weight: 600; letter-spacing: .14em; }
-    .coffee-card h3 { margin: 0; font: 700 27px/1.35 "Noto Serif TC", serif; letter-spacing: .05em; }
-    .coffee-notes { margin: 11px 0 22px; color: rgba(255,255,255,.75); font-size: 13px; }
-    .coffee-bottom { display: flex; align-items: center; justify-content: space-between; padding-top: 18px; border-top: 1px solid rgba(255,255,255,.25); }
-    .price { font-size: 14px; font-weight: 700; }
-    .add-button { padding: 5px 0; border: 0; color: #fff; background: none; font-size: 12px; font-weight: 700; letter-spacing: .07em; }
-    .add-button:hover { color: var(--sand); }
-
-    /* Brew process */
-    .brew { overflow: hidden; padding: 118px 0; background: #fff; }
-    .brew-grid { display: grid; grid-template-columns: .93fr 1.07fr; gap: clamp(44px, 9vw, 112px); align-items: center; }
-    .brew-visual { position: relative; min-height: 396px; border: 1px solid var(--line); background: linear-gradient(140deg, #f4fafb 0 50%, #e5f4f7 50%); }
-    .brew-visual::before { content: ""; position: absolute; top: 35px; left: 34px; width: 70px; height: 1px; background: var(--blue); box-shadow: 0 9px 0 var(--blue), 0 18px 0 var(--blue); }
-    .pour-ring { position: absolute; top: 71px; right: 48px; width: 240px; height: 240px; border: 35px solid rgba(12,91,149,.13); border-radius: 50%; }
-    .pour-ring::after { content: ""; position: absolute; top: 45px; left: 45px; width: 80px; height: 80px; border: 3px solid var(--blue); border-radius: 50%; }
-    .brew-v60 { position: absolute; bottom: 35px; left: 51%; width: 178px; height: 150px; border: 4px solid var(--blue); background: rgba(255,255,255,.54); clip-path: polygon(0 0,100% 0,73% 100%,27% 100%); transform: translateX(-50%); }
-    .brew-v60::before { content: ""; position: absolute; top: 14px; right: 16px; bottom: 0; left: 16px; border-left: 1px solid #8dcce0; border-right: 1px solid #8dcce0; transform: skewX(-11deg); }
-    .brew-caption { position: absolute; right: 25px; bottom: 21px; color: var(--blue); font: 600 10px/1.4 "Playfair Display", serif; letter-spacing: .13em; text-align: right; }
-    .brew-steps { display: grid; gap: 0; margin: 28px 0 0; padding: 0; list-style: none; }
-    .brew-steps li { display: grid; grid-template-columns: 43px 1fr; gap: 15px; padding: 17px 0; border-top: 1px solid var(--line); }
-    .brew-steps li:last-child { border-bottom: 1px solid var(--line); }
-    .step-no { color: var(--blue); font: 600 15px/1.7 "Playfair Display", serif; }
-    .step-copy b { display: block; font-size: 15px; }
-    .step-copy span { color: var(--muted); font-size: 13px; }
-
-    /* CTA and Footer */
-    .visit { position: relative; overflow: hidden; padding: 96px 0; color: #fff; background: var(--navy); text-align: center; }
-    .visit::before, .visit::after { content: ""; position: absolute; width: 370px; height: 370px; border: 1px solid rgba(117,198,232,.21); border-radius: 50%; }
-    .visit::before { top: -225px; left: -90px; }
-    .visit::after { right: -125px; bottom: -235px; }
-    .visit .wrap { position: relative; z-index: 1; }
-    .visit .eyebrow { justify-content: center; color: var(--sky); }
-    .visit .section-title { font-size: clamp(30px, 4vw, 45px); }
-    .visit p:not(.eyebrow) { max-width: 48ch; margin: 19px auto 28px; color: rgba(255,255,255,.73); }
-    .subscribe { display: flex; max-width: 500px; margin: 0 auto; border: 1px solid rgba(255,255,255,.5); }
-    .subscribe input { min-width: 0; flex: 1; padding: 13px 17px; border: 0; outline: none; color: #fff; background: transparent; }
-    .subscribe input::placeholder { color: rgba(255,255,255,.55); }
-    .subscribe button { padding: 0 22px; border: 0; color: var(--navy); background: var(--sand); font-size: 13px; font-weight: 700; white-space: nowrap; }
-    .subscribe button:hover { background: #f0c77f; }
-    footer { color: rgba(255,255,255,.67); background: #031c31; }
-    .footer-top { display: grid; grid-template-columns: 1.7fr 1fr 1fr; gap: 40px; padding: 58px 0 38px; }
-    .footer-brand { color: #fff; }
-    .footer-brand p { max-width: 31ch; margin: 16px 0 0; font-size: 13px; }
-    .footer-heading { margin: 0 0 15px; color: var(--sky); font-size: 11px; font-weight: 700; letter-spacing: .14em; }
-    .footer-list { margin: 0; padding: 0; list-style: none; font-size: 13px; }
-    .footer-list li + li { margin-top: 8px; }
-    .footer-list a:hover { color: #fff; }
-    .footer-bottom { display: flex; justify-content: space-between; gap: 24px; padding: 17px 0; border-top: 1px solid rgba(255,255,255,.14); color: rgba(255,255,255,.43); font-size: 11px; letter-spacing: .05em; }
-
-    .toast { position: fixed; right: 22px; bottom: 22px; z-index: 20; max-width: min(330px, calc(100% - 44px)); padding: 13px 18px; border-left: 3px solid var(--sand); color: #fff; background: var(--navy); box-shadow: var(--shadow); opacity: 0; pointer-events: none; transform: translateY(12px); transition: opacity .25s, transform .25s; font-size: 13px; }
-    .toast.show { opacity: 1; transform: translateY(0); }
-
-    .reveal { opacity: 0; transform: translateY(18px); transition: opacity .65s ease, transform .65s ease; }
-    .reveal.visible { opacity: 1; transform: translateY(0); }
-
-    @media (max-width: 820px) {
-      .nav { min-height: 68px; }
-      .menu-toggle { display: block; width: 42px; height: 42px; font-size: 23px; }
-      .nav-links { position: absolute; top: 68px; right: 0; left: 0; display: grid; gap: 0; max-height: 0; overflow: hidden; background: #05233c; transition: max-height .27s ease; }
-      .nav-links.open { max-height: 300px; border-top: 1px solid rgba(255,255,255,.12); }
-      .nav-links a { padding: 13px 24px; border-bottom: 1px solid rgba(255,255,255,.09); }
-      .nav-links .nav-cta { margin: 11px 24px; text-align: center; }
-      .hero, .hero-grid { min-height: 710px; }
-      .hero-grid { grid-template-columns: 1fr; padding-top: 115px; }
-      .hero-art { min-height: 278px; margin-top: -35px; }
-      .sun { right: 14%; width: 114px; height: 114px; }
-      .mountain { width: 82%; height: 92%; }
-      .coffee-vessel { right: 15%; transform: scale(.72); transform-origin: bottom right; }
-      .art-label { top: 44%; right: 1%; }
-      .intro-grid, .brew-grid { grid-template-columns: 1fr; }
-      .intro-stamp { max-width: 510px; width: 100%; }
-      .coffee-grid { grid-template-columns: 1fr 1fr; }
-      .coffee-card:last-child { grid-column: span 2; }
-      .footer-top { grid-template-columns: 1.4fr 1fr; }
-      .footer-brand { grid-column: span 2; }
+      border: 1px solid rgba(83, 168, 182, 0.2);
     }
 
-    @media (max-width: 560px) {
-      .wrap { width: min(100% - 34px, 1120px); }
-      .hero, .hero-grid { min-height: 680px; }
-      .hero-grid { padding-top: 100px; padding-bottom: 48px; }
-      .hero-title { font-size: 40px; }
-      .hero-lede { margin: 18px 0 23px; font-size: 14px; }
-      .hero-art { min-height: 240px; }
-      .art-label { display: none; }
-      .scroll-line { bottom: 12px; left: 17px; }
-      .intro, .coffee-section, .brew { padding: 76px 0; }
-      .stamp-circle { width: 245px; height: 245px; }
-      .stamp-card { width: 185px; padding: 16px; }
-      .section-head { display: block; }
-      .section-head .section-copy { margin-top: 15px; }
-      .coffee-grid { grid-template-columns: 1fr; }
-      .coffee-card, .coffee-card:last-child { grid-column: auto; min-height: 330px; }
-      .coffee-content { min-height: 330px; }
-      .brew-visual { min-height: 310px; }
-      .pour-ring { top: 48px; right: 25px; width: 190px; height: 190px; border-width: 27px; }
-      .visit { padding: 76px 0; }
-      .subscribe { display: block; border: 0; }
-      .subscribe input { width: 100%; border: 1px solid rgba(255,255,255,.5); }
-      .subscribe button { width: 100%; min-height: 48px; margin-top: 9px; }
-      .footer-top { grid-template-columns: 1fr; gap: 30px; }
-      .footer-brand { grid-column: auto; }
-      .footer-bottom { display: block; }
-      .footer-bottom span + span { display: block; margin-top: 6px; }
+    .brew-card-header {
+      font-size: 13px;
+      letter-spacing: 0.15em;
+      color: var(--sky-blue);
+      margin-bottom: 16px;
+      text-transform: uppercase;
+      font-weight: 700;
     }
 
-    @media (prefers-reduced-motion: reduce) {
-      html { scroll-behavior: auto; }
-      *, *::before, *::after { transition-duration: .01ms !important; animation-duration: .01ms !important; }
-      .reveal { opacity: 1; transform: none; }
+    .brew-card-title {
+      font-size: 28px;
+      line-height: 1.4;
+      margin-bottom: 20px;
+    }
+
+    .brew-card-desc {
+      font-size: 15px;
+      color: rgba(255, 255, 255, 0.8);
+      margin-bottom: 28px;
+      line-height: 1.8;
+    }
+
+    .brew-specs-row {
+      display: flex;
+      gap: 20px;
+      padding-top: 24px;
+      border-top: 1px solid rgba(255, 255, 255, 0.18);
+    }
+
+    .spec-item b {
+      display: block;
+      font-size: 20px;
+      color: var(--warm-amber);
+      font-family: 'Outfit', sans-serif;
+    }
+
+    .spec-item span {
+      font-size: 12px;
+      color: rgba(255, 255, 255, 0.65);
+    }
+
+    .brew-steps-list {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    .step-row {
+      display: flex;
+      gap: 20px;
+      align-items: flex-start;
+      padding: 16px 20px;
+      border-radius: var(--radius-md);
+      background: var(--warm-cream);
+      border: 1px solid var(--border-color);
+      transition: all 0.25s ease;
+    }
+
+    .step-row:hover {
+      background: var(--light-blue);
+      border-color: var(--sky-blue);
+      transform: translateX(6px);
+    }
+
+    .step-digit {
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      background: var(--primary-blue);
+      color: var(--white);
+      display: grid;
+      place-items: center;
+      font-weight: 700;
+      font-size: 18px;
+      flex-shrink: 0;
+      font-family: 'Outfit', sans-serif;
+    }
+
+    .step-content h4 {
+      font-size: 18px;
+      color: var(--primary-navy);
+      margin-bottom: 6px;
+    }
+
+    .step-content p {
+      font-size: 14px;
+      color: var(--text-muted);
+      line-height: 1.65;
+    }
+
+    /* 互動暖心功能：心情風味推薦器 */
+    .comfort-section {
+      background: linear-gradient(180deg, var(--warm-cream) 0%, var(--ice-blue) 100%);
+    }
+
+    .comfort-box {
+      background: var(--white);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      padding: 44px;
+      box-shadow: var(--shadow-md);
+      max-width: 920px;
+      margin: 0 auto;
+    }
+
+    .mood-tabs {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-bottom: 36px;
+    }
+
+    .mood-tab {
+      padding: 12px 24px;
+      border-radius: 30px;
+      background: var(--light-blue);
+      color: var(--primary-navy);
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      border: 1px solid transparent;
+      transition: all 0.25s ease;
+    }
+
+    .mood-tab.active {
+      background: var(--primary-blue);
+      color: var(--white);
+      box-shadow: 0 4px 14px rgba(19, 59, 92, 0.3);
+    }
+
+    .mood-tab:hover:not(.active) {
+      background: #dbeaf0;
+    }
+
+    .mood-result-panel {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 36px;
+      align-items: center;
+      background: var(--warm-cream);
+      padding: 32px;
+      border-radius: var(--radius-md);
+      border: 1px solid rgba(83, 168, 182, 0.25);
+    }
+
+    .mood-message-side h3 {
+      font-size: 22px;
+      color: var(--primary-navy);
+      margin-bottom: 12px;
+    }
+
+    .mood-message-side p {
+      font-size: 15px;
+      color: var(--text-muted);
+      line-height: 1.8;
+      margin-bottom: 20px;
+    }
+
+    .mood-quote {
+      font-style: italic;
+      color: var(--accent-blue);
+      padding-left: 14px;
+      border-left: 3px solid var(--warm-amber);
+      font-size: 14px;
+    }
+
+    .mood-recommend-card {
+      background: var(--white);
+      padding: 24px;
+      border-radius: var(--radius-md);
+      border: 1px solid var(--border-color);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .rec-origin {
+      font-size: 11px;
+      color: var(--sky-blue);
+      font-weight: 700;
+      letter-spacing: 0.12em;
+    }
+
+    .rec-title {
+      font-size: 20px;
+      color: var(--primary-navy);
+      margin: 4px 0 10px;
+    }
+
+    .rec-notes {
+      font-size: 14px;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+
+    .btn-choose {
+      width: 100%;
+      padding: 10px;
+      background: var(--primary-blue);
+      color: var(--white);
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 14px;
+    }
+
+    .btn-choose:hover {
+      background: var(--primary-navy);
+    }
+
+    /* 門市與溫暖信箱 (Visit & Subscribe) */
+    .contact-section {
+      background: var(--white);
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+    }
+
+    .contact-info-card {
+      background: var(--ice-blue);
+      padding: 40px;
+      border-radius: var(--radius-md);
+      border: 1px solid var(--border-color);
+    }
+
+    .info-item {
+      display: flex;
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+
+    .info-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      background: var(--light-blue);
+      display: grid;
+      place-items: center;
+      color: var(--primary-blue);
+      font-size: 20px;
+      flex-shrink: 0;
+    }
+
+    .info-text h4 {
+      font-size: 16px;
+      color: var(--primary-navy);
+      margin-bottom: 4px;
+    }
+
+    .info-text p {
+      font-size: 14px;
+      color: var(--text-muted);
+    }
+
+    .subscribe-card {
+      background: linear-gradient(135deg, var(--primary-navy), var(--primary-blue));
+      color: var(--white);
+      padding: 40px;
+      border-radius: var(--radius-md);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      box-shadow: var(--shadow-md);
+    }
+
+    .sub-title {
+      font-size: 26px;
+      margin-bottom: 12px;
+    }
+
+    .sub-desc {
+      font-size: 14px;
+      color: rgba(255, 255, 255, 0.8);
+      margin-bottom: 28px;
+      line-height: 1.7;
+    }
+
+    .subscribe-form {
+      display: flex;
+      gap: 10px;
+    }
+
+    .subscribe-input {
+      flex: 1;
+      padding: 14px 18px;
+      border-radius: 30px;
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      background: rgba(255, 255, 255, 0.1);
+      color: var(--white);
+      font-size: 14px;
+      outline: none;
+    }
+
+    .subscribe-input::placeholder {
+      color: rgba(255, 255, 255, 0.55);
+    }
+
+    .subscribe-input:focus {
+      border-color: var(--sky-blue);
+      background: rgba(255, 255, 255, 0.18);
+    }
+
+    .subscribe-submit {
+      padding: 14px 26px;
+      border-radius: 30px;
+      background: var(--warm-amber);
+      color: var(--primary-navy);
+      font-weight: 700;
+      font-size: 14px;
+      white-space: nowrap;
+    }
+
+    .subscribe-submit:hover {
+      background: var(--warm-amber-hover);
+    }
+
+    /* 頁尾 Footer */
+    .footer {
+      background: #051424;
+      color: rgba(255, 255, 255, 0.7);
+      padding: 60px 0 30px;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .footer-top {
+      display: grid;
+      grid-template-columns: 1.5fr 1fr 1fr 1fr;
+      gap: 40px;
+      margin-bottom: 50px;
+    }
+
+    .footer-col h5 {
+      color: var(--white);
+      font-size: 16px;
+      margin-bottom: 18px;
+      font-weight: 700;
+    }
+
+    .footer-col ul {
+      list-style: none;
+    }
+
+    .footer-col li {
+      margin-bottom: 10px;
+    }
+
+    .footer-col a:hover {
+      color: var(--sky-blue);
+    }
+
+    .footer-bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-top: 28px;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      font-size: 13px;
+    }
+
+    /* Toast 通知 */
+    .toast {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      z-index: 999;
+      background: var(--primary-navy);
+      color: var(--white);
+      padding: 14px 24px;
+      border-radius: 12px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+      border-left: 4px solid var(--warm-amber);
+      font-size: 14px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      transform: translateY(100px);
+      opacity: 0;
+      pointer-events: none;
+      transition: all 0.3s ease;
+    }
+
+    .toast.show {
+      transform: translateY(0);
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    /* 回到頂部按鈕 */
+    .back-to-top {
+      position: fixed;
+      bottom: 24px;
+      left: 24px;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: var(--primary-blue);
+      color: var(--white);
+      display: grid;
+      place-items: center;
+      box-shadow: var(--shadow-md);
+      z-index: 90;
+      opacity: 0;
+      pointer-events: none;
+      transition: all 0.3s ease;
+    }
+
+    .back-to-top.active {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .back-to-top:hover {
+      background: var(--sky-blue);
+      transform: translateY(-3px);
+    }
+
+    /* 響應式微調 */
+    @media (max-width: 1024px) {
+      .beans-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .pillars-grid {
+        grid-template-columns: 1fr;
+      }
+      .hero-grid {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+      .hero-desc {
+        margin: 0 auto 36px;
+      }
+      .hero-actions {
+        justify-content: center;
+      }
+      .hero-stats {
+        justify-content: center;
+      }
+      .hero-card {
+        max-width: 520px;
+        margin: 0 auto;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .mobile-btn {
+        display: block;
+      }
+      .nav-links {
+        position: fixed;
+        top: 76px;
+        left: 0;
+        right: 0;
+        background: var(--primary-navy);
+        flex-direction: column;
+        padding: 24px;
+        gap: 18px;
+        border-bottom: 1px solid rgba(83, 168, 182, 0.2);
+        transform: translateY(-150%);
+        transition: transform 0.3s ease;
+      }
+      .nav-links.open {
+        transform: translateY(0);
+      }
+      .brew-layout {
+        grid-template-columns: 1fr;
+      }
+      .mood-result-panel {
+        grid-template-columns: 1fr;
+      }
+      .contact-grid {
+        grid-template-columns: 1fr;
+      }
+      .footer-top {
+        grid-template-columns: 1fr;
+        gap: 28px;
+      }
+      .subscribe-form {
+        flex-direction: column;
+      }
+      .subscribe-submit {
+        width: 100%;
+      }
     }
   </style>
 </head>
 <body>
-  <header class="site-header" id="top">
-    <nav class="nav wrap" aria-label="主要導覽">
-      <a class="brand" href="#top" aria-label="回到藍天咖啡首頁">
-        <span class="brand-mark">B</span>
-        <span>藍天咖啡<small>BLUE SKY COFFEE</small></span>
+
+  <!-- 頂部導覽列 -->
+  <header class="header">
+    <nav class="nav container" aria-label="主要導覽">
+      <a href="#top" class="brand" aria-label="好喝咖啡首頁">
+        <div class="brand-icon">
+          <!-- 咖啡杯圖標 -->
+          <svg viewBox="0 0 24 24">
+            <path d="M2 19h18v2H2v-2zm2-15h14v7a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V4zm16 2v5a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2z"/>
+          </svg>
+        </div>
+        <div class="brand-text">
+          <span class="brand-title serif">好喝咖啡</span>
+          <span class="brand-sub outfit">HaoHe Coffee</span>
+        </div>
       </a>
-      <button class="menu-toggle" type="button" aria-label="開啟導覽選單" aria-expanded="false" aria-controls="navLinks">☰</button>
-      <div class="nav-links" id="navLinks">
-        <a href="#story">我們的堅持</a>
-        <a href="#coffee">本季選豆</a>
-        <a href="#brew">沖煮日常</a>
-        <a class="nav-cta" href="#visit">訂閱風味通信</a>
-      </div>
+
+      <button class="mobile-btn" id="mobileToggle" aria-label="展開選單">☰</button>
+
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#about">品牌用途</a></li>
+        <li><a href="#beans">進口咖啡豆</a></li>
+        <li><a href="#brew">溫暖手沖</a></li>
+        <li><a href="#comfort">暖心推薦</a></li>
+        <li><a href="#contact">門市資訊</a></li>
+        <li><a href="#beans" class="nav-cta">挑選好咖啡</a></li>
+      </ul>
     </nav>
   </header>
 
-  <main>
-    <section class="hero" aria-labelledby="heroTitle">
-      <div class="hero-grid wrap">
-        <div class="reveal">
-          <p class="eyebrow">HAND BREWED · SLOWLY ROASTED</p>
-          <h1 class="hero-title" id="heroTitle">讓風味，<br>在<span class="blue">藍天</span>下<br>慢慢抵達。</h1>
-          <p class="hero-lede">藍天咖啡為喜歡手沖的你，挑選值得細品的單一產區咖啡豆。從第一縷花香，到最後一口回甘，每一杯都有自己的晴朗天氣。</p>
-          <div class="hero-actions">
-            <a class="button button-primary" href="#coffee">探索本季風味 <span class="arrow">→</span></a>
-            <a class="button button-outline" href="#story">認識藍天</a>
+  <!-- 主視覺 Banner (Hero Section) -->
+  <main id="top">
+    <section class="hero">
+      <div class="container hero-grid">
+        <div class="hero-content">
+          <div class="hero-badge">
+            <span class="hero-badge-dot"></span>
+            <span>專為愛咖啡的人打造 · 莊園級進口豆</span>
           </div>
-          <p class="hero-note">TAIPEI · TAIWAN · EST. 2018</p>
+          <h1 class="hero-title serif">
+            給消費者一杯<br>
+            <span class="highlight">好喝的咖啡</span>，<br>
+            傳遞日常的<span class="warmth">溫暖</span>。
+          </h1>
+          <p class="hero-desc">
+            「好喝咖啡」深信，一杯好咖啡是忙碌生活中最深切的慰藉。我們嚴選來自世界頂級產區的進口咖啡豆，以職人小批次烘焙與細膩手沖，將真誠的香氣與溫度，送到每一位喜愛咖啡的你手中。
+          </p>
+          <div class="hero-actions">
+            <a href="#beans" class="btn btn-warm">探索進口咖啡豆 →</a>
+            <a href="#comfort" class="btn btn-outline">找到適合你的暖心風味</a>
+          </div>
+          <div class="hero-stats">
+            <div class="stat-item">
+              <span class="stat-num">100%</span>
+              <span class="stat-label">世界產區進口原豆</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-num">92°C</span>
+              <span class="stat-label">最佳手沖萃取溫度</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-num">365 天</span>
+              <span class="stat-label">陪伴暖心的醇厚香氣</span>
+            </div>
+          </div>
         </div>
-        <div class="hero-art" aria-hidden="true">
-          <div class="sun"></div>
-          <div class="mountain"></div>
-          <div class="coffee-vessel"><div class="dripper"></div><div class="carafe"></div></div>
-          <p class="art-label"><strong>92°C</strong>理想水溫<br>細細喚醒香氣</p>
+
+        <div class="hero-card">
+          <div class="coffee-steam-wrap">
+            <!-- 暖心熱咖啡杯 SVG 插畫 -->
+            <svg class="cup-svg" viewBox="0 0 120 120" fill="none">
+              <ellipse cx="60" cy="105" rx="36" ry="7" fill="rgba(0,0,0,0.3)"/>
+              <path d="M30 45 L35 95 Q36 102 46 102 L74 102 Q84 102 85 95 L90 45 Z" fill="#ffffff"/>
+              <ellipse cx="60" cy="45" rx="30" ry="8" fill="#133b5c"/>
+              <ellipse cx="60" cy="47" rx="27" ry="6" fill="#804a26"/>
+              <path d="M86 52 Q105 52 105 68 Q105 84 83 84" stroke="#ffffff" stroke-width="6" stroke-linecap="round" fill="none"/>
+              <!-- 熱氣動畫線條 -->
+              <path d="M48 35 Q45 25 50 18 Q55 10 50 4" stroke="#53a8b6" stroke-width="3" stroke-linecap="round" fill="none" opacity="0.8"/>
+              <path d="M60 32 Q56 22 62 15 Q68 8 62 2" stroke="#e6a15c" stroke-width="3.5" stroke-linecap="round" fill="none"/>
+              <path d="M72 35 Q76 25 71 18 Q66 10 71 4" stroke="#53a8b6" stroke-width="3" stroke-linecap="round" fill="none" opacity="0.8"/>
+            </svg>
+          </div>
+          <h3 class="hero-card-quote serif">「好喝，就是這麼簡單純粹。」</h3>
+          <p class="hero-card-sub">一杯注入心意的熱咖啡 · 讓整座城市暖起來</p>
+          <div class="card-tags">
+            <span class="tag-chip">產地直送</span>
+            <span class="tag-chip">純淨水質</span>
+            <span class="tag-chip">細緻手沖</span>
+            <span class="tag-chip">溫柔服務</span>
+          </div>
         </div>
       </div>
-      <p class="scroll-line">SCROLL TO DISCOVER</p>
     </section>
 
-    <section class="intro" id="story" aria-labelledby="storyTitle">
-      <div class="intro-grid wrap">
-        <div class="intro-stamp reveal" aria-hidden="true">
-          <div class="stamp-circle"><div><strong>慢一點，<br>更清楚。</strong><span>LET THE FLAVOUR SPEAK</span></div></div>
-          <div class="stamp-card"><b>BLUE SKY NOTE</b><p>一杯好咖啡，從來不是匆忙完成的事。</p></div>
+    <!-- 品牌用途區塊 (About / Purpose) -->
+    <section class="section about-section" id="about">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-eyebrow">Our Purpose · 我們的使命</span>
+          <h2 class="section-title serif">給消費者一杯真正「好喝」的咖啡</h2>
+          <p class="section-desc">
+            我們不做浮誇的噱頭，只專注於做好一件事：挑選好豆子、照顧好水溫、用心手沖，讓走進好喝咖啡的每一個人，都能被溫暖好好包圍。
+          </p>
         </div>
-        <div class="reveal">
-          <p class="eyebrow">OUR PHILOSOPHY</p>
-          <h2 class="section-title" id="storyTitle">在一杯之間，<br>看見產地的<em>晴朗</em>。</h2>
-          <p class="section-copy">我們相信，精品咖啡的美好不該被複雜掩蓋。以小批次烘焙留住豆子的個性，再用穩定、誠實的手沖，讓風土與時間在杯中變得清晰。</p>
-          <p class="section-copy">給懂得放慢腳步的人，也給每一個想重新認識咖啡的人。</p>
-          <a class="intro-link" href="#brew">看看我們如何沖煮 <span>→</span></a>
+
+        <div class="pillars-grid">
+          <div class="pillar-card">
+            <div class="pillar-icon-box">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/>
+              </svg>
+            </div>
+            <h3 class="pillar-title">頂級進口咖啡豆</h3>
+            <p class="pillar-text">
+              嚴選非洲、中南美洲等知名咖啡產區莊園，直接進口新鮮精品生豆，保留最原始純粹的風土甘醇與迷人花果芳香。
+            </p>
+          </div>
+
+          <div class="pillar-card">
+            <div class="pillar-icon-box">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+              </svg>
+            </div>
+            <h3 class="pillar-title">溫暖消費者的心</h3>
+            <p class="pillar-text">
+              咖啡不只是一杯飲品，更是一份日常的陪伴。從親切問候到熱騰騰的杯身，每一口都能讓您卸下疲憊，重拾放鬆的微笑。
+            </p>
+          </div>
+
+          <div class="pillar-card">
+            <div class="pillar-icon-box">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 14l-5-5 1.41-1.41L12 14.17l7.59-7.59L21 8l-9 9z"/>
+              </svg>
+            </div>
+            <h3 class="pillar-title">為愛咖啡的人而生</h3>
+            <p class="pillar-text">
+              如果你也熱愛探訪不同產區的風味層次，我們準備了詳盡的風味圖譜與沖煮指南，讓你的品飲時光充滿樂趣與驚喜。
+            </p>
+          </div>
         </div>
       </div>
     </section>
 
-    <section class="coffee-section" id="coffee" aria-labelledby="coffeeTitle">
-      <div class="wrap">
-        <div class="section-head reveal">
-          <div><p class="eyebrow">SEASONAL SELECTION</p><h2 class="section-title" id="coffeeTitle">今天，想喝哪一片<em>藍天</em>？</h2></div>
-          <p class="section-copy">三款當季單品，為不同的晨光、午後與靜夜而選。</p>
+    <!-- 品牌風格：進口咖啡豆選單 (Imported Coffee Beans) -->
+    <section class="section beans-section" id="beans">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-eyebrow">Imported Selection · 莊園進口</span>
+          <h2 class="section-title serif">嚴選世界產區精品進口咖啡豆</h2>
+          <p class="section-desc">
+            橫跨各大洲知名莊園，以小批次溫火烘焙，鎖住每一顆進口豆的最佳賞味期。
+          </p>
         </div>
-        <div class="coffee-grid">
-          <article class="coffee-card reveal">
-            <div class="coffee-content">
-              <span class="coffee-number">01 / BRIGHT</span>
-              <p class="coffee-origin">ETHIOPIA · YIRGACHEFFE</p>
-              <h3>衣索比亞<br>耶加雪菲</h3>
-              <p class="coffee-notes">白花、佛手柑、蜂蜜</p>
-              <div class="coffee-bottom"><span class="price">NT$ 520 / 200g</span><button class="add-button" type="button" data-coffee="衣索比亞・耶加雪菲">加入收藏 ＋</button></div>
+
+        <div class="beans-grid">
+          <!-- 豆款 1 -->
+          <article class="bean-card">
+            <div class="bean-badge-area">
+              <div class="bean-origin">ETHIOPIA · 衣索比亞</div>
+              <h3 class="bean-name serif">耶加雪菲 日曬</h3>
+              <span class="bean-roast">淺焙 · Light</span>
+            </div>
+            <div class="bean-body">
+              <div class="bean-notes">
+                <div class="notes-label">風味輪筆記</div>
+                <div class="notes-content">白茉莉花香、熟蜜桃、柑橘甜香、清澈蜂蜜尾韻</div>
+              </div>
+              <div class="bean-details">
+                <div>莊園：阿利姆合作社</div>
+                <div>處理法：精緻日曬</div>
+                <div>海拔：2,100m</div>
+                <div>規格：半磅 (227g)</div>
+              </div>
+              <div class="bean-footer">
+                <div class="bean-price">NT$ 480 <small>/包</small></div>
+                <button class="btn-add" onclick="handleAddToCart('衣索比亞 耶加雪菲 日曬')">加入收藏 ＋</button>
+              </div>
             </div>
           </article>
-          <article class="coffee-card reveal">
-            <div class="coffee-content">
-              <span class="coffee-number">02 / JUICY</span>
-              <p class="coffee-origin">KENYA · KIRINYAGA</p>
-              <h3>肯亞<br>祈安布</h3>
-              <p class="coffee-notes">黑醋栗、洛神、葡萄柚</p>
-              <div class="coffee-bottom"><span class="price">NT$ 580 / 200g</span><button class="add-button" type="button" data-coffee="肯亞・祈安布">加入收藏 ＋</button></div>
+
+          <!-- 豆款 2 -->
+          <article class="bean-card">
+            <div class="bean-badge-area">
+              <div class="bean-origin">COLOMBIA · 哥倫比亞</div>
+              <h3 class="bean-name serif">慧蘭 薇拉莊園</h3>
+              <span class="bean-roast">中淺焙 · Medium Light</span>
+            </div>
+            <div class="bean-body">
+              <div class="bean-notes">
+                <div class="notes-label">風味輪筆記</div>
+                <div class="notes-content">焦糖布丁、紅蘋果脆酸、堅果甘甜、榛果香氣</div>
+              </div>
+              <div class="bean-details">
+                <div>莊園：薇拉高地莊園</div>
+                <div>處理法：經典水洗</div>
+                <div>海拔：1,850m</div>
+                <div>規格：半磅 (227g)</div>
+              </div>
+              <div class="bean-footer">
+                <div class="bean-price">NT$ 420 <small>/包</small></div>
+                <button class="btn-add" onclick="handleAddToCart('哥倫比亞 慧蘭 薇拉莊園')">加入收藏 ＋</button>
+              </div>
             </div>
           </article>
-          <article class="coffee-card reveal">
-            <div class="coffee-content">
-              <span class="coffee-number">03 / ROUND</span>
-              <p class="coffee-origin">COLOMBIA · HUILA</p>
-              <h3>哥倫比亞<br>慧蘭</h3>
-              <p class="coffee-notes">黃桃、焦糖、可可尾韻</p>
-              <div class="coffee-bottom"><span class="price">NT$ 460 / 200g</span><button class="add-button" type="button" data-coffee="哥倫比亞・慧蘭">加入收藏 ＋</button></div>
+
+          <!-- 豆款 3 -->
+          <article class="bean-card">
+            <div class="bean-badge-area">
+              <div class="bean-origin">GUATEMALA · 瓜地馬拉</div>
+              <h3 class="bean-name serif">安提瓜 花神</h3>
+              <span class="bean-roast">中焙 · Medium</span>
+            </div>
+            <div class="bean-body">
+              <div class="bean-notes">
+                <div class="notes-label">風味輪筆記</div>
+                <div class="notes-content">黑巧克力、杏仁堅果、細緻煙燻花香、圓潤甘醇</div>
+              </div>
+              <div class="bean-details">
+                <div>產區：安提瓜火山區</div>
+                <div>處理法：傳統水洗</div>
+                <div>海拔：1,600m</div>
+                <div>規格：半磅 (227g)</div>
+              </div>
+              <div class="bean-footer">
+                <div class="bean-price">NT$ 450 <small>/包</small></div>
+                <button class="btn-add" onclick="handleAddToCart('瓜地馬拉 安提瓜 花神')">加入收藏 ＋</button>
+              </div>
+            </div>
+          </article>
+
+          <!-- 豆款 4 -->
+          <article class="bean-card">
+            <div class="bean-badge-area">
+              <div class="bean-origin">KENYA · 肯亞</div>
+              <h3 class="bean-name serif">祈安布 AA級</h3>
+              <span class="bean-roast">中焙 · Medium</span>
+            </div>
+            <div class="bean-body">
+              <div class="bean-notes">
+                <div class="notes-label">風味輪筆記</div>
+                <div class="notes-content">黑醋栗果醬、烏梅香氣、葡萄柚酸甜、飽滿厚實</div>
+              </div>
+              <div class="bean-details">
+                <div>產區：祈安布高地</div>
+                <div>處理法：肯亞雙重水洗</div>
+                <div>海拔：1,900m</div>
+                <div>規格：半磅 (227g)</div>
+              </div>
+              <div class="bean-footer">
+                <div class="bean-price">NT$ 520 <small>/包</small></div>
+                <button class="btn-add" onclick="handleAddToCart('肯亞 祈安布 AA級')">加入收藏 ＋</button>
+              </div>
             </div>
           </article>
         </div>
       </div>
     </section>
 
-    <section class="brew" id="brew" aria-labelledby="brewTitle">
-      <div class="brew-grid wrap">
-        <div class="brew-visual reveal" aria-hidden="true">
-          <div class="pour-ring"></div><div class="brew-v60"></div><p class="brew-caption">V60 / 15G : 240ML<br>2'45''</p>
-        </div>
-        <div class="reveal">
-          <p class="eyebrow">A QUIET RITUAL</p>
-          <h2 class="section-title" id="brewTitle">把時間交給水，<br>讓咖啡說<em>自己的話</em>。</h2>
-          <p class="section-copy">不需要繁複儀式，只要三個安靜的步驟。每一個參數，都是為了讓你更靠近豆子原本的樣子。</p>
-          <ol class="brew-steps">
-            <li><span class="step-no">01</span><span class="step-copy"><b>研磨，先聞見期待</b><span>15g 中細研磨，讓香氣從指尖開始展開。</span></span></li>
-            <li><span class="step-no">02</span><span class="step-copy"><b>悶蒸，等待第一個呼吸</b><span>以 92°C 熱水浸潤 30 秒，喚醒甜感與層次。</span></span></li>
-            <li><span class="step-no">03</span><span class="step-copy"><b>注水，保持自己的節奏</b><span>穩定畫圈，讓 240ml 的清澈在 2 分 45 秒完成。</span></span></li>
-          </ol>
+    <!-- 品牌功能：讓消費者感到溫暖 - 溫暖手沖藝術 -->
+    <section class="section brew-section" id="brew">
+      <div class="container">
+        <div class="brew-layout">
+          <div class="brew-image-box">
+            <div class="brew-card-header">Warm Brewing · 溫暖之境</div>
+            <h3 class="brew-card-title serif">
+              用 92 度的熱水，<br>
+              喚醒原產地的陽光與溫潤。
+            </h3>
+            <p class="brew-card-desc">
+              手沖咖啡是一場放慢腳步的對話。看著熱水慢慢潤濕研磨好的咖啡粉，深邃的咖啡香瀰漫在空氣中，那一刻，整個世界都安靜下來，只剩下讓人安穩的溫度。
+            </p>
+            <div class="brew-specs-row">
+              <div class="spec-item">
+                <b>1:15</b>
+                <span>黃金水粉比</span>
+              </div>
+              <div class="spec-item">
+                <b>92°C</b>
+                <span>最溫暖萃取溫</span>
+              </div>
+              <div class="spec-item">
+                <b>2'30"</b>
+                <span>慢調萃取時間</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="brew-steps-list">
+            <div class="step-row">
+              <div class="step-digit">01</div>
+              <div class="step-content">
+                <h4>溫壺暖杯 · 喚醒溫度</h4>
+                <p>先以溫熱的水潤濕濾紙並溫暖陶瓷杯。溫杯不僅鎖住風味，更讓雙手接過咖啡的第一瞬間感受到切實的暖意。</p>
+              </div>
+            </div>
+
+            <div class="step-row">
+              <div class="step-digit">02</div>
+              <div class="step-content">
+                <h4>溫柔悶蒸 · 綻放香氣</h4>
+                <p>注入 35ml 熱水浸潤 30 秒，讓咖啡粉像麵包般蓬鬆呼吸，進口豆蘊藏的花香與果香在此刻悄悄甦醒。</p>
+              </div>
+            </div>
+
+            <div class="step-row">
+              <div class="step-digit">03</div>
+              <div class="step-content">
+                <h4>穩速注水 · 層次堆疊</h4>
+                <p>中心向外畫圈注入，水流平緩而堅定。看著琥珀色的咖啡液一滴滴落入壺中，心情也跟著徹底沉澱放鬆。</p>
+              </div>
+            </div>
+
+            <div class="step-row">
+              <div class="step-digit">04</div>
+              <div class="step-content">
+                <h4>捧杯細品 · 暖心回甘</h4>
+                <p>趁熱小啜一口，讓乾淨明亮的產地風味滑過舌尖，留下久久不散的溫潤甜感。</p>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </section>
 
-    <section class="visit" id="visit" aria-labelledby="visitTitle">
-      <div class="wrap reveal">
-        <p class="eyebrow">THE BLUE SKY LETTER</p>
-        <h2 class="section-title" id="visitTitle">把下一杯好咖啡，<br>寄到你的日常裡。</h2>
-        <p>每月一封風味通信，分享新豆、沖煮靈感與只給會員的小小驚喜。</p>
-        <form class="subscribe" id="subscribeForm">
-          <input type="email" aria-label="電子郵件地址" placeholder="留下你的 Email" required>
-          <button type="submit">訂閱風味通信</button>
-        </form>
+    <!-- 品牌功能：讓消費者感到溫暖 - 暖心風味互動推薦 -->
+    <section class="section comfort-section" id="comfort">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-eyebrow">Warmth Finder · 暖心小指引</span>
+          <h2 class="section-title serif">今天，你需要哪一種溫暖？</h2>
+          <p class="section-desc">
+            點選你此刻的心情或時刻，好喝咖啡為你推薦最契合的一杯進口好滋味。
+          </p>
+        </div>
+
+        <div class="comfort-box">
+          <div class="mood-tabs" role="tablist">
+            <button class="mood-tab active" onclick="switchMood('morning')">☀️ 清晨醒神</button>
+            <button class="mood-tab" onclick="switchMood('afternoon')">☕ 午後小憩</button>
+            <button class="mood-tab" onclick="switchMood('rainy')">🌧️ 雨天療癒</button>
+            <button class="mood-tab" onclick="switchMood('night')">🌙 靜夜沉澱</button>
+          </div>
+
+          <div class="mood-result-panel" id="moodResult">
+            <div class="mood-message-side">
+              <h3 id="moodHeading">清晨醒神 · 迎向晴朗晨光</h3>
+              <p id="moodText">
+                新的一天開始了，需要一杯明亮清新的香氣喚醒感官。輕柔的花果調性，像早晨第一道照進窗台的陽光，給你滿滿朝氣與好心情。
+              </p>
+              <div class="mood-quote" id="moodQuote">
+                「只要有杯好咖啡，今天就是值得期待的一天。」
+              </div>
+            </div>
+
+            <div class="mood-recommend-card">
+              <div class="rec-origin" id="recOrigin">ETHIOPIA · 衣索比亞</div>
+              <h4 class="rec-title serif" id="recTitle">耶加雪菲 日曬 G1</h4>
+              <p class="rec-notes" id="recNotes">明亮的花香與蜂蜜果甜，清爽不苦澀，喚醒沉睡一整晚的精神。</p>
+              <button class="btn-choose" onclick="handleOrderMood()">立即品嚐這一份溫暖 →</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 門市資訊與暖心信箱 (Contact & Subscribe) -->
+    <section class="section contact-section" id="contact">
+      <div class="container">
+        <div class="contact-grid">
+          <div class="contact-info-card">
+            <span class="section-eyebrow">Visit HaoHe · 實體門市</span>
+            <h3 class="serif" style="font-size: 26px; color: var(--primary-navy); margin-bottom: 20px;">歡迎來到好喝咖啡，坐坐喝杯熱的</h3>
+            <p style="color: var(--text-muted); margin-bottom: 30px; font-size: 15px;">
+              我們準備了舒適柔軟的木質座椅、輕柔的爵士音樂，以及剛烘焙好的各國進口咖啡豆，期待為你端上一杯冒著熱氣的好咖啡。
+            </p>
+
+            <div class="info-item">
+              <div class="info-icon">📍</div>
+              <div class="info-text">
+                <h4>門市地址</h4>
+                <p>台北市大安區溫暖路 88 號（近捷運站步行 3 分鐘）</p>
+              </div>
+            </div>
+
+            <div class="info-item">
+              <div class="info-icon">🕒</div>
+              <div class="info-text">
+                <h4>營業時間</h4>
+                <p>週一至週日 08:30 – 19:30（全年無休，隨時提供溫暖）</p>
+              </div>
+            </div>
+
+            <div class="info-item">
+              <div class="info-icon">📞</div>
+              <div class="info-text">
+                <h4>暖心專線</h4>
+                <p>(02) 2345-6789 / 歡迎來電詢問咖啡豆風味與沖煮建議</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="subscribe-card">
+            <span class="outfit" style="color: var(--sky-blue); font-size: 12px; letter-spacing: 0.18em; font-weight: 700; text-transform: uppercase;">Warmth Letter</span>
+            <h3 class="sub-title serif">訂閱「好喝暖報」</h3>
+            <p class="sub-desc">
+              每個月雙週發送一封溫暖通信，與您分享世界產區新進口好豆、日常手沖技巧與只給老朋友的專屬折價優惠。
+            </p>
+            <form class="subscribe-form" id="subscribeForm" onsubmit="handleSubscribe(event)">
+              <input type="email" class="subscribe-input" placeholder="請輸入您的 Email 電子信箱" required>
+              <button type="submit" class="subscribe-submit">接收溫暖通信</button>
+            </form>
+          </div>
+        </div>
       </div>
     </section>
   </main>
 
-  <footer>
-    <div class="footer-top wrap">
-      <div class="footer-brand"><a class="brand" href="#top"><span class="brand-mark">B</span><span>藍天咖啡<small>BLUE SKY COFFEE</small></span></a><p>為喜愛手沖咖啡的你，留下一段慢慢品味、微微放晴的時間。</p></div>
-      <div><p class="footer-heading">EXPLORE</p><ul class="footer-list"><li><a href="#story">我們的堅持</a></li><li><a href="#coffee">本季選豆</a></li><li><a href="#brew">沖煮日常</a></li></ul></div>
-      <div><p class="footer-heading">CONTACT</p><ul class="footer-list"><li><a href="mailto:hello@bluesky.coffee">hello@bluesky.coffee</a></li><li>台北市大安區晴朗路 18 號</li><li>每日 10:00 — 19:00</li></ul></div>
+  <!-- 頁尾 Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-col">
+          <div class="brand" style="margin-bottom: 16px;">
+            <div class="brand-icon">
+              <svg viewBox="0 0 24 24">
+                <path d="M2 19h18v2H2v-2zm2-15h14v7a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V4zm16 2v5a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2z"/>
+              </svg>
+            </div>
+            <div class="brand-text">
+              <span class="brand-title serif">好喝咖啡</span>
+              <span class="brand-sub outfit">HaoHe Coffee</span>
+            </div>
+          </div>
+          <p style="font-size: 14px; line-height: 1.8; color: rgba(255, 255, 255, 0.65);">
+            堅持嚴選全球優質進口咖啡豆，以誠摯的心手沖每一杯咖啡。希望在平凡的日常裡，為每位愛咖啡的人帶來一口實實在在的溫暖。
+          </p>
+        </div>
+
+        <div class="footer-col">
+          <h5>網站導覽</h5>
+          <ul>
+            <li><a href="#about">品牌用途與理念</a></li>
+            <li><a href="#beans">進口精品咖啡豆</a></li>
+            <li><a href="#brew">溫暖手沖指南</a></li>
+            <li><a href="#comfort">心情暖心推薦</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h5>進口咖啡豆產區</h5>
+          <ul>
+            <li><a href="#beans">衣索比亞 耶加雪菲</a></li>
+            <li><a href="#beans">哥倫比亞 薇拉莊園</a></li>
+            <li><a href="#beans">瓜地馬拉 安提瓜花神</a></li>
+            <li><a href="#beans">肯亞 祈安布 AA</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h5>品牌資訊</h5>
+          <ul>
+            <li><span style="color: var(--sky-blue);">電話：</span>(02) 2345-6789</li>
+            <li><span style="color: var(--sky-blue);">信箱：</span>service@haohecoffee.com</li>
+            <li><span style="color: var(--sky-blue);">特色：</span>進口豆 · 藍色調 · 溫暖人心</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>© 2026 好喝咖啡 HaoHe Coffee. All rights reserved.</p>
+        <p>為愛咖啡的人，端上一杯好喝的咖啡。</p>
+      </div>
     </div>
-    <div class="footer-bottom wrap"><span>© 2026 BLUE SKY COFFEE. ALL RIGHTS RESERVED.</span><span>BREW SLOW · LIVE BRIGHT</span></div>
   </footer>
 
-  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <!-- 回到頂部按鈕 -->
+  <a href="#top" class="back-to-top" id="backToTop" aria-label="回到頂部">↑</a>
+
+  <!-- Toast 訊息通知 -->
+  <div class="toast" id="toastMessage">
+    <span>❤️</span>
+    <span id="toastText">已成功將商品加入收藏！</span>
+  </div>
+
   <script>
-    const menuToggle = document.querySelector('.menu-toggle');
+    // 手機版選單切換
+    const mobileBtn = document.getElementById('mobileToggle');
     const navLinks = document.getElementById('navLinks');
-    menuToggle.addEventListener('click', () => {
-      const open = navLinks.classList.toggle('open');
-      menuToggle.setAttribute('aria-expanded', open);
-      menuToggle.setAttribute('aria-label', open ? '關閉導覽選單' : '開啟導覽選單');
-      menuToggle.textContent = open ? '×' : '☰';
-    });
-    navLinks.querySelectorAll('a').forEach(link => link.addEventListener('click', () => {
-      navLinks.classList.remove('open');
-      menuToggle.setAttribute('aria-expanded', 'false');
-      menuToggle.setAttribute('aria-label', '開啟導覽選單');
-      menuToggle.textContent = '☰';
-    }));
-
-    const toast = document.getElementById('toast');
-    let toastTimer;
-    function showToast(message) {
-      window.clearTimeout(toastTimer);
-      toast.textContent = message;
-      toast.classList.add('show');
-      toastTimer = window.setTimeout(() => toast.classList.remove('show'), 2600);
-    }
-    document.querySelectorAll('[data-coffee]').forEach(button => button.addEventListener('click', () => {
-      showToast(`已將「${button.dataset.coffee}」加入你的收藏。`);
-    }));
-    document.getElementById('subscribeForm').addEventListener('submit', event => {
-      event.preventDefault();
-      event.currentTarget.reset();
-      showToast('謝謝訂閱，下一封晴朗的風味通信即將寄出。');
-    });
-
-    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    const revealItems = document.querySelectorAll('.reveal');
-    if (reducedMotion || !('IntersectionObserver' in window)) {
-      revealItems.forEach(item => item.classList.add('visible'));
-    } else {
-      const observer = new IntersectionObserver(entries => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('visible');
-            observer.unobserve(entry.target);
-          }
+    if (mobileBtn && navLinks) {
+      mobileBtn.addEventListener('click', () => {
+        navLinks.classList.toggle('open');
+      });
+      navLinks.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+          navLinks.classList.remove('open');
         });
-      }, { threshold: .12 });
-      revealItems.forEach(item => observer.observe(item));
+      });
+    }
+
+    // 回到頂部按鈕顯示控制
+    const backToTop = document.getElementById('backToTop');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 350) {
+        backToTop.classList.add('active');
+      } else {
+        backToTop.classList.remove('active');
+      }
+    });
+
+    // Toast 提示框
+    const toast = document.getElementById('toastMessage');
+    const toastText = document.getElementById('toastText');
+    let toastTimeout;
+
+    function showToast(msg) {
+      clearTimeout(toastTimeout);
+      toastText.textContent = msg;
+      toast.classList.add('show');
+      toastTimeout = setTimeout(() => {
+        toast.classList.remove('show');
+      }, 3000);
+    }
+
+    function handleAddToCart(beanName) {
+      showToast(`已將進口好豆「${beanName}」加入收藏清單！☕`);
+    }
+
+    function handleSubscribe(e) {
+      e.preventDefault();
+      const input = e.target.querySelector('input');
+      const email = input.value;
+      if (email) {
+        showToast(`謝謝您的訂閱！溫暖通信已發送至 ${email} 💌`);
+        input.value = '';
+      }
+    }
+
+    function handleOrderMood() {
+      const title = document.getElementById('recTitle').textContent;
+      showToast(`已為您選定「${title}」，期待為您送上溫暖！☕`);
+    }
+
+    // 心情暖心推薦切換邏輯
+    const moodData = {
+      morning: {
+        heading: "清晨醒神 · 迎向晴朗晨光",
+        text: "新的一天開始了，需要一杯明亮清新的香氣喚醒感官。輕柔的花果調性，像早晨第一道照進窗台的陽光，給你滿滿朝氣與好心情。",
+        quote: "「只要有杯好咖啡，今天就是值得期待的一天。」",
+        origin: "ETHIOPIA · 衣索比亞",
+        title: "耶加雪菲 日曬 G1",
+        notes: "明亮的花香與蜂蜜果甜，清爽不苦澀，喚醒沉睡一整晚的精神。"
+      },
+      afternoon: {
+        heading: "午後小憩 · 撫平工作疲憊",
+        text: "處理了一早上的繁雜事務，午後需要一口溫柔圓潤的滋味。細緻的焦糖香與堅果調，讓急躁的思緒重新平靜下來。",
+        quote: "「放慢 15 分鐘，給自己一段不被催促的溫暖留白。」",
+        origin: "COLOMBIA · 哥倫比亞",
+        title: "慧蘭 薇拉莊園 水洗",
+        notes: "如絲綢般柔滑的口感，伴隨紅蘋果的微酸與焦糖甜韻，最適合配塊小餅乾。"
+      },
+      rainy: {
+        heading: "雨天療癒 · 靜享醇厚時光",
+        text: "外頭下著微涼細雨，聽著雨聲捧著熱騰騰的咖啡杯。濃郁黑巧克力與堅果的醇香，像一條暖洋洋的厚毛毯，將你溫柔包裹。",
+        quote: "「雨水留在窗外，溫暖留在掌心。」",
+        origin: "GUATEMALA · 瓜地馬拉",
+        title: "安提瓜 花神 中焙",
+        notes: "黑巧克力的濃郁基底與火山土壤賦予的溫暖甘醇，最具安全感的溫暖陪伴。"
+      },
+      night: {
+        heading: "靜夜沉澱 · 溫柔犒賞自己",
+        text: "夜幕降臨，萬籟俱寂。一杯深沉而層次豐富的進口好咖啡，陪你讀幾頁書、回顧一整天的收穫，向自己說聲辛苦了。",
+        quote: "「用一杯好咖啡的餘溫，向今天道一聲晚安。」",
+        origin: "KENYA · 肯亞",
+        title: "祈安布 AA級 雙重水洗",
+        notes: "深邃的烏梅果香與黑醋栗果醬甜感，尾韻悠長回甘，沉靜迷人。"
+      }
+    };
+
+    function switchMood(type) {
+      const data = moodData[type];
+      if (!data) return;
+
+      document.querySelectorAll('.mood-tab').forEach(tab => {
+        tab.classList.remove('active');
+      });
+      event.target.classList.add('active');
+
+      document.getElementById('moodHeading').textContent = data.heading;
+      document.getElementById('moodText').textContent = data.text;
+      document.getElementById('moodQuote').textContent = data.quote;
+      document.getElementById('recOrigin').textContent = data.origin;
+      document.getElementById('recTitle').textContent = data.title;
+      document.getElementById('recNotes').textContent = data.notes;
     }
   </script>
 </body>
